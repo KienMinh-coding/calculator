@@ -1,0 +1,45 @@
+body {
+    color: rgb(235, 235, 235);
+}
+button {
+    color: rgb(235, 235, 235);
+    font-size: 30px;
+    outline: none;
+    /* border: none; */
+    cursor: pointer;
+}
+
+.calculator {
+    font-family: "Roboto", sans-serif;
+    max-width: 400px;
+    margin: 30px auto;
+    height: 518px;
+    border-radius: 1px 1px 0 0;
+}
+
+.screen {
+    border-radius: 15px 15px 0 0;
+    background-color: rgb(56, 56, 56);
+    padding: 40px 20px 10px 20px;
+    font-size: 50px;
+    text-align: right;
+}
+
+.buttons-grid {
+    border-radius: 0 0 15px 15px;
+    display: grid;
+    grid-template-rows: 82px 82px 82px 82px 82px;
+    grid-template-columns: 100px 100px 100px 100px;
+}
+
+.big-key {
+    background-color: rgb(75, 75, 75);
+}
+
+.ope-key {
+    background-color: rgb(242, 163, 60);
+}
+
+.num-key {
+    background-color: rgb(105, 105, 105);
+}
