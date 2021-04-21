@@ -22,25 +22,26 @@ opeKeys.forEach((opeKey) => {
         const display = document.querySelector('.screen');
         display.textContent = opeKey.textContent;
         operator = display.textContent;
-        if(!FirstUserInput) FirstUserInput = userInput;
+        if (!FirstUserInput) FirstUserInput = userInput;
     })
 });
 
 const equal = document.querySelector('#equal');
 equal.addEventListener('click', () => {
-    const defaultDisplay = document.querySelector(".default-display");
-    if (defaultDisplay) defaultDisplay.textContent = "";
     if (FirstUserInput) {
+        console.log(userInput);
         if (userInput) {
             SecondUserInput = userInput;
             const display = document.querySelector('.screen');
             display.textContent = "";
-            display.textContent = operate(operator, FirstUserInput, SecondUserInput);
+            console.log(operator);
+            console.log(FirstUserInput);
+            console.log(SecondUserInput);
+            userInput = operate(operator, FirstUserInput, SecondUserInput)
+            display.textContent = userInput;
         }
     }
 });
-
-console.log(userInput);
 
 
 function operate(operator, a, b) {

@@ -41,6 +41,6 @@ button {
     background-color: rgb(242, 163, 60);
 }
 
-.num-key {
+#equal, .num-key {
     background-color: rgb(105, 105, 105);
 }
