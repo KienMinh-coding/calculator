@@ -8,38 +8,31 @@ numKeys.forEach((numKey) => {
         const defaultDisplay = document.querySelector(".default-display");
         if (defaultDisplay) defaultDisplay.textContent = "";
         const display = document.querySelector('.screen');
-        if (display.textContent === "+" || display.textContent === "-" || display.textContent === "×" || display.textContent === "÷") display.textContent = "";
         display.textContent += numKey.textContent;
         userInput = parseInt(display.textContent);
+        if (operator) {
+            display.textContent = "";
+            
+        }
     });
 });
 
 const opeKeys = document.querySelectorAll('.ope-key');
 opeKeys.forEach((opeKey) => {
     opeKey.addEventListener('click', () => {
-        const defaultDisplay = document.querySelector(".default-display");
-        if (defaultDisplay) defaultDisplay.textContent = "";
-        const display = document.querySelector('.screen');
-        display.textContent = opeKey.textContent;
-        operator = display.textContent;
+        operator = opeKey.textContent;
         if (!FirstUserInput) FirstUserInput = userInput;
     })
 });
 
 const equal = document.querySelector('#equal');
-equal.addEventListener('click', () => {
-    if (FirstUserInput) {
-        console.log(userInput);
-        if (userInput) {
-            SecondUserInput = userInput;
-            const display = document.querySelector('.screen');
-            display.textContent = "";
-            console.log(operator);
-            console.log(FirstUserInput);
-            console.log(SecondUserInput);
-            userInput = operate(operator, FirstUserInput, SecondUserInput)
-            display.textContent = userInput;
-        }
+equal.addEventListener('click', () => {if (operator) {
+        console.log("1");
+        SecondUserInput = userInput;
+        const display = document.querySelector('.screen');
+        display.textContent = "";
+        userInput = operate(operator, FirstUserInput, SecondUserInput)
+        display.textContent = userInput;
     }
 });
 
