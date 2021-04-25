@@ -9,15 +9,24 @@ numKeys.forEach((numKey) => {
         const defaultDisplay = document.querySelector(".default-display");
         if (defaultDisplay) defaultDisplay.textContent = "";
         const display = document.querySelector('.screen');
-        if (operator) {
-            if(!secondUserInput) display.textContent = "";
-            display.textContent += numKey.textContent;
-            secondUserInput = parseFloat(display.textContent);
-            console.log(secondUserInput);
-        } else {
-            display.textContent += numKey.textContent;
-            userInput = parseFloat(display.textContent);
-            console.log(userInput);
+        if ((!userInput && numKey.textContent === ".") || (!secondUserInput && numKey.textContent === ".")) {   //when user input "." first
+            if (operator) {     
+                if (!secondUserInput) display.textContent = "";
+                display.textContent = "0.";
+                secondUserInput = display.textContent;
+            } else {
+                display.textContent = "0.";
+                userInput = parseFloat(display.textContent);
+            }
+        } else {        //when user don't input "." first
+            if (operator) {
+                if (!secondUserInput) display.textContent = "";
+                display.textContent += numKey.textContent;
+                secondUserInput = display.textContent;
+            } else {
+                display.textContent += numKey.textContent;
+                userInput = parseFloat(display.textContent);
+            }
         }
     });
 });
@@ -35,11 +44,10 @@ opeKeys.forEach((opeKey) => {
 });
 
 const equal = document.querySelector('#equal');
-equal.addEventListener('click', () => {if (operator) {
+equal.addEventListener('click', () => {
+    if (operator) {
         const display = document.querySelector('.screen');
         display.textContent = "";
-        console.log(firstUserInput);
-        console.log(secondUserInput);
         result = operate(operator, firstUserInput, secondUserInput)
         display.textContent = result;
         firstUserInput = "";
