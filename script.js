@@ -1,18 +1,23 @@
 let userInput = 0;
-let FirstUserInput;
-let SecondUserInput;
+let firstUserInput;
+let secondUserInput;
 let operator;
+let result;
 const numKeys = document.querySelectorAll('.num-key');
 numKeys.forEach((numKey) => {
     numKey.addEventListener('click', () => {
         const defaultDisplay = document.querySelector(".default-display");
         if (defaultDisplay) defaultDisplay.textContent = "";
         const display = document.querySelector('.screen');
-        display.textContent += numKey.textContent;
-        userInput = parseInt(display.textContent);
         if (operator) {
-            display.textContent = "";
-            
+            if(!secondUserInput) display.textContent = "";
+            display.textContent += numKey.textContent;
+            secondUserInput = parseFloat(display.textContent);
+            console.log(secondUserInput);
+        } else {
+            display.textContent += numKey.textContent;
+            userInput = parseFloat(display.textContent);
+            console.log(userInput);
         }
     });
 });
@@ -21,18 +26,24 @@ const opeKeys = document.querySelectorAll('.ope-key');
 opeKeys.forEach((opeKey) => {
     opeKey.addEventListener('click', () => {
         operator = opeKey.textContent;
-        if (!FirstUserInput) FirstUserInput = userInput;
+        if (!result) {
+            firstUserInput = userInput;
+        } else {
+            firstUserInput = result;
+        }
     })
 });
 
 const equal = document.querySelector('#equal');
 equal.addEventListener('click', () => {if (operator) {
-        console.log("1");
-        SecondUserInput = userInput;
         const display = document.querySelector('.screen');
         display.textContent = "";
-        userInput = operate(operator, FirstUserInput, SecondUserInput)
-        display.textContent = userInput;
+        console.log(firstUserInput);
+        console.log(secondUserInput);
+        result = operate(operator, firstUserInput, secondUserInput)
+        display.textContent = result;
+        firstUserInput = "";
+        secondUserInput = "";
     }
 });
 
