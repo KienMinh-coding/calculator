@@ -25,7 +25,6 @@ numKeys.forEach((numKey) => {
             } else {
                 display.textContent += numKey.textContent;
                 userInput = parseFloat(display.textContent);
-                console.log(userInput);
             }
         }
     });
@@ -34,24 +33,35 @@ numKeys.forEach((numKey) => {
 const opeKeys = document.querySelectorAll('.ope-key');
 opeKeys.forEach((opeKey) => {
     opeKey.addEventListener('click', () => {
+        if (operator && !result) {
+            const display = document.querySelector('.screen');
+            result = operate(operator, firstUserInput, secondUserInput)
+            display.textContent = result;
+            firstUserInput = result;
+            result = "";
+            secondUserInput = "";
+            operator = opeKey.textContent;
+        } else {
         operator = opeKey.textContent;
         if (!result) {
             firstUserInput = userInput;
         } else {
             firstUserInput = result;
         }
-    })
+    }
+    }
+    )
 });
 
 const equal = document.querySelector('#equal');
 equal.addEventListener('click', () => {
     if (operator) {
         const display = document.querySelector('.screen');
-        display.textContent = "";
         result = operate(operator, firstUserInput, secondUserInput)
         display.textContent = result;
         firstUserInput = "";
         secondUserInput = "";
+        operator = "";
     }
 });
 
