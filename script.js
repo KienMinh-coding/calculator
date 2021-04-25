@@ -9,23 +9,23 @@ numKeys.forEach((numKey) => {
         const defaultDisplay = document.querySelector(".default-display");
         if (defaultDisplay) defaultDisplay.textContent = "";
         const display = document.querySelector('.screen');
-        if ((!userInput && numKey.textContent === ".") || (!secondUserInput && numKey.textContent === ".")) {   //when user input "." first
-            if (operator) {     
-                if (!secondUserInput) display.textContent = "";
+        if (operator) {
+            if (!secondUserInput) display.textContent = "";
+            if (!secondUserInput && numKey.textContent === ".") {       //when user input . first
                 display.textContent = "0.";
-                secondUserInput = display.textContent;
+                secondUserInput = "0";
             } else {
-                display.textContent = "0.";
-                userInput = parseFloat(display.textContent);
+                display.textContent += numKey.textContent;
+                secondUserInput = parseFloat(display.textContent);
             }
-        } else {        //when user don't input "." first
-            if (operator) {
-                if (!secondUserInput) display.textContent = "";
-                display.textContent += numKey.textContent;
-                secondUserInput = display.textContent;
+        } else {
+            if (!userInput && numKey.textContent === ".") {       //when user input . first
+                display.textContent = "0.";
+                userInput = "0"
             } else {
                 display.textContent += numKey.textContent;
                 userInput = parseFloat(display.textContent);
+                console.log(userInput);
             }
         }
     });
