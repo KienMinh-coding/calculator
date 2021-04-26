@@ -1,11 +1,32 @@
 body {
     color: rgb(235, 235, 235);
 }
+
 button {
+    /*Reset's every elements apperance*/
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    border-spacing: 0;
+    color: #26589F;
+    font-family: 'PT Sans Narrow',sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.42rem;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    text-decoration: none;
+    text-indent: 0;
+}
+
+button {
+    text-align: center;
     color: rgb(235, 235, 235);
     font-size: 30px;
     outline: none;
     cursor: pointer;
+    border: 0.01px solid rgb(56, 56, 56);
 }
 
 .calculator {
@@ -13,7 +34,8 @@ button {
     max-width: 400px;
     margin: 30px auto;
     height: 518px;
-    border-radius: 1px 1px 0 0;
+    /* border: solid black;
+    border-radius: 15px 15px 0 0; */
 }
 
 .screen {
@@ -27,7 +49,7 @@ button {
 }
 
 .buttons-grid {
-    border-radius: 0 0 15px 15px;
+    /* border-radius: 0 0 15px 15px; */
     display: grid;
     grid-template-rows: 82px 82px 82px 82px 82px;
     grid-template-columns: 100px 100px 100px 100px;
@@ -44,3 +66,4 @@ button {
 #equal, .num-key {
     background-color: rgb(105, 105, 105);
 }
+

@@ -25,6 +25,7 @@ numKeys.forEach((numKey) => {
             } else {
                 display.textContent += numKey.textContent;
                 userInput = parseFloat(display.textContent);
+                console.log(userInput);
             }
         }
     });
@@ -47,6 +48,7 @@ opeKeys.forEach((opeKey) => {
             firstUserInput = userInput;
         } else {
             firstUserInput = result;
+            result = "";
         }
     }
     }
