@@ -17,15 +17,17 @@ numKeys.forEach((numKey) => {
             } else {
                 display.textContent += numKey.textContent;
                 secondUserInput = parseFloat(display.textContent);
+                console.log(`secondUserInput:${secondUserInput}`);
             }
         } else {
             if (!userInput && numKey.textContent === ".") {       //when user input . first
                 display.textContent = "0.";
                 userInput = "0"
             } else {
+                if(display.textContent === "0") display.textContent = "";
                 display.textContent += numKey.textContent;
                 userInput = parseFloat(display.textContent);
-                console.log(userInput);
+                console.log(`userInput:${userInput}`);
             }
         }
     });
@@ -43,14 +45,19 @@ opeKeys.forEach((opeKey) => {
             secondUserInput = "";
             operator = opeKey.textContent;
         } else {
-        operator = opeKey.textContent;
-        if (!result) {
-            firstUserInput = userInput;
-        } else {
-            firstUserInput = result;
-            result = "";
+            operator = opeKey.textContent;
+            if (!result) {
+                firstUserInput = userInput;
+            } else {
+                if (result !== userInput) {
+                    firstUserInput = userInput;
+                    result = "";
+                } else {
+                    firstUserInput = result;
+                    result = "";
+                }
+            }
         }
-    }
     }
     )
 });
