@@ -17,7 +17,6 @@ numKeys.forEach((numKey) => {
             } else {
                 display.textContent += numKey.textContent;
                 secondUserInput = parseFloat(display.textContent);
-                console.log(`secondUserInput:${secondUserInput}`);
             }
         } else {
             if (!userInput && numKey.textContent === ".") {       //when user input . first
@@ -27,7 +26,6 @@ numKeys.forEach((numKey) => {
                 if(display.textContent === "0") display.textContent = "";
                 display.textContent += numKey.textContent;
                 userInput = parseFloat(display.textContent);
-                console.log(`userInput:${userInput}`);
             }
         }
     });
@@ -36,7 +34,7 @@ numKeys.forEach((numKey) => {
 const opeKeys = document.querySelectorAll('.ope-key');
 opeKeys.forEach((opeKey) => {
     opeKey.addEventListener('click', () => {
-        if (operator && !result) {
+        if (operator && !result && secondUserInput) { //pause here 9 * - 3 + - 3 = 3
             const display = document.querySelector('.screen');
             result = operate(operator, firstUserInput, secondUserInput)
             display.textContent = result;

@@ -64,3 +64,7 @@ button {
     background-color: rgb(105, 105, 105);
 }
 
+.big-key:active, .ope-key:active, #equal:active, .num-key:active {
+    transform: scale(0.98);
+}
+
