@@ -23,9 +23,11 @@ numKeys.forEach((numKey) => {
                 display.textContent = "0.";
                 userInput = "0"
             } else {
-                if(display.textContent === "0") display.textContent = "";
+                if (display.textContent === "0") display.textContent = "";
                 display.textContent += numKey.textContent;
                 userInput = parseFloat(display.textContent);
+                console.log(userInput);
+                if(result) result = "";
             }
         }
     });
@@ -34,26 +36,25 @@ numKeys.forEach((numKey) => {
 const opeKeys = document.querySelectorAll('.ope-key');
 opeKeys.forEach((opeKey) => {
     opeKey.addEventListener('click', () => {
-        if (operator && !result && secondUserInput) { //pause here 9 * - 3 + - 3 = 3
-            const display = document.querySelector('.screen');
-            result = operate(operator, firstUserInput, secondUserInput)
-            display.textContent = result;
-            firstUserInput = result;
-            result = "";
-            secondUserInput = "";
-            operator = opeKey.textContent;
-        } else {
+        if (operator && !result) {
+            if (!secondUserInput) {
+                operator = opeKey.textContent;
+            } else {
+                const display = document.querySelector('.screen');
+                result = operate(operator, firstUserInput, secondUserInput)
+                display.textContent = result;
+                firstUserInput = result;
+                result = "";
+                secondUserInput = "";
+                operator = opeKey.textContent;
+            }
+        } else { 
             operator = opeKey.textContent;
             if (!result) {
                 firstUserInput = userInput;
             } else {
-                if (result !== userInput) {
-                    firstUserInput = userInput;
-                    result = "";
-                } else {
-                    firstUserInput = result;
-                    result = "";
-                }
+                firstUserInput = result;
+                result = "";
             }
         }
     }
@@ -69,6 +70,7 @@ equal.addEventListener('click', () => {
         firstUserInput = "";
         secondUserInput = "";
         operator = "";
+        
     }
 });
 
