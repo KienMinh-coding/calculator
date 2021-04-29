@@ -71,19 +71,6 @@ opeKeys.forEach((opeKey) => {
     )
 });
 
-const equal = document.querySelector('#equal');
-equal.addEventListener('click', () => {
-    if (operator) {
-        const display = document.querySelector('.screen');
-        result = operate(operator, firstUserInput, secondUserInput)
-        display.textContent = result;
-        firstUserInput = "";
-        secondUserInput = "";
-        operator = "";
-
-    }
-});
-
 const clearKey = document.querySelector('#clear-key');
 clearKey.addEventListener('click', () => {
     const display = document.querySelector('.screen');
@@ -94,6 +81,41 @@ clearKey.addEventListener('click', () => {
     result = "";
     userInput = "";
 })
+
+/*
+case1) 9 - 1 8 del = => 8 OK
+case2) 9 - 1 8 del = 1 - 8 1 1 del = => 0  OK
+*/
+const deleteKey = document.querySelector('#delete-key');
+deleteKey.addEventListener('click', () => {
+    const display = document.querySelector('.screen');
+    let displayStr = parseFloat(display.textContent).toString();
+    display.textContent = displayStr.slice(0, -1);
+    if (!display.textContent) display.textContent = "0";
+    switch (true) {
+        case (typeof result == "number"):
+            result = parseFloat(display.textContent);
+            break;
+        case (typeof secondUserInput == "number"):
+            secondUserInput = parseFloat(display.textContent);
+            break;
+        case ((typeof userInput == "number") && userInput !== 0):
+            userInput = parseFloat(display.textContent);
+            break;
+    }
+})
+
+const equal = document.querySelector('#equal');
+equal.addEventListener('click', () => {
+    if (operator) {
+        const display = document.querySelector('.screen');
+        result = operate(operator, firstUserInput, secondUserInput)
+        display.textContent = result;
+        firstUserInput = "";
+        secondUserInput = "";
+        operator = "";
+    }
+});
 
 function operate(operator, a, b) {
     if (operator === "+") return add(a, b);
