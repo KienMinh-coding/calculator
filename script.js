@@ -84,6 +84,16 @@ equal.addEventListener('click', () => {
     }
 });
 
+const clearKey = document.querySelector('#clear-key');
+clearKey.addEventListener('click', () => {
+    const display = document.querySelector('.screen');
+    display.textContent = "0";
+    firstUserInput = "";
+    secondUserInput = "";
+    operator = "";
+    result = "";
+    userInput = "";
+})
 
 function operate(operator, a, b) {
     if (operator === "+") return add(a, b);
