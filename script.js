@@ -15,19 +15,29 @@ numKeys.forEach((numKey) => {
                 display.textContent = "0.";
                 secondUserInput = "0";
             } else {
-                display.textContent += numKey.textContent;
-                secondUserInput = parseFloat(display.textContent);
+                if (numKey.textContent === "." && display.textContent.indexOf(".") >= 0) {
+                    //when user input more than one "."    
+                } else {
+                    display.textContent += numKey.textContent;
+                    secondUserInput = parseFloat(display.textContent);
+                }
+
             }
         } else {
             if (!userInput && numKey.textContent === ".") {       //when user input . first
                 display.textContent = "0.";
                 userInput = "0"
             } else {
-                if (display.textContent === "0") display.textContent = "";
-                display.textContent += numKey.textContent;
-                userInput = parseFloat(display.textContent);
-                console.log(userInput);
-                if(result) result = "";
+                if (numKey.textContent === "." && display.textContent.indexOf(".") >= 0) {
+                    //when user input more than one "."    
+                } else {
+                    if (display.textContent === "0") display.textContent = "";
+                    if (!userInput && numKey.textContent === "0") display.textContent = ""; // if user input "025" will print to "25"
+                    display.textContent += numKey.textContent;
+                    userInput = parseFloat(display.textContent);
+                    if (result) result = "";
+                }
+
             }
         }
     });
@@ -48,7 +58,7 @@ opeKeys.forEach((opeKey) => {
                 secondUserInput = "";
                 operator = opeKey.textContent;
             }
-        } else { 
+        } else {
             operator = opeKey.textContent;
             if (!result) {
                 firstUserInput = userInput;
@@ -70,7 +80,7 @@ equal.addEventListener('click', () => {
         firstUserInput = "";
         secondUserInput = "";
         operator = "";
-        
+
     }
 });
 
