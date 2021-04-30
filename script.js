@@ -62,6 +62,7 @@ opeKeys.forEach((opeKey) => {
             operator = opeKey.textContent;
             if (!result) {
                 firstUserInput = userInput;
+                result = "";
             } else {
                 firstUserInput = result;
                 result = "";
@@ -82,10 +83,7 @@ clearKey.addEventListener('click', () => {
     userInput = "";
 })
 
-/*
-case1) 9 - 1 8 del = => 8 OK
-case2) 9 - 1 8 del = 1 - 8 1 1 del = => 0  OK
-*/
+
 const deleteKey = document.querySelector('#delete-key');
 deleteKey.addEventListener('click', () => {
     const display = document.querySelector('.screen');
