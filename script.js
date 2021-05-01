@@ -100,7 +100,7 @@ function operatorIsPressed(param) {
         }
     } else {
         operator = param;
-        if (!result) {
+        if (!result && (result !== 0)) {
             firstUserInput = userInput;
             result = "";
         } else {
